@@ -45,9 +45,9 @@ Route::group(['middleware' => 'admin'], function () {
     Route::put('edit/{id}', [AdminController::class, 'update'])->name('update');
     Route::get('edit/{id}', [AdminController::class, 'edit'])->name('update');
     Route::get('delete/{id}', [AdminController::class, 'destroy'])->name('delete');
-    Route::put('pedit/{id}', [AdminController::class, 'pupdate'])->name('pupdate');
-    Route::get('pedit/{id}', [AdminController::class, 'pedit'])->name('pupdate');
-    Route::get('pdelete/{id}', [AdminController::class, 'pdestroy'])->name('pdelete');
+    Route::put('pedit/{id}', [AdminController::class, 'postupdate'])->name('pupdate');
+    Route::get('pedit/{id}', [AdminController::class, 'postedit'])->name('pupdate');
+    Route::get('pdelete/{id}', [AdminController::class, 'Postdestroy'])->name('pdelete');
     Route::get('showcategory', [AdminController::class, 'showcategory'])->name('showcategory');
     Route::get('update&delete', [AdminController::class, 'update_delete'])->name('update&delete');
     Route::get('user', [AdminController::class, 'user'])->name('user');

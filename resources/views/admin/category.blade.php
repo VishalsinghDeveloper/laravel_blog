@@ -37,6 +37,16 @@
                     </span>
                   </div>
 
+                  <div class="form-outline mb-4">
+                    <input type="number" name="status"class="form-control form-control-lg" />
+                    <label class="form-label">Status</label>
+                    <span class="text-danger">
+                        @error('status')
+                            {{ $message }}
+                        @enderror
+                    </span>
+                  </div>
+
                     <div class="text-center mt-5">
                         <input type="submit" class="btn btn-primary" value="Create" />
                     </div>

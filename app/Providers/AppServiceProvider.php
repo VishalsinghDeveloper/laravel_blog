@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
     }
     protected $policies = [
         Post::class => PostPolicy::class,

@@ -8,60 +8,35 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-
-
-
+use App\Services\AuthService;
+use App\Http\Requests\RegisterUserRequest;
 
 class AuthController extends Controller
 {
 
-    public function logout(){
-        Session::flush();
-        Auth::logout();
-        return redirect('');
+    public function logout(AuthService $AuthService,)
+    {
+        $AuthService->UserLogout();
+        return redirect(route('login'));
     }
 
-    public function index(){
+    public function index()
+    {
         return view('auth.login');
     }
-    public function login(Request $request){
-
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required'
-        ]);
-
-        if(Auth::attempt($request->only('email','password'))){
-            return redirect(route('home'));
-        }
-
+    public function login(AuthService $AuthService, Request $request)
+    {
+        $AuthService->UserLogin($request);
         return redirect('/')->withError('Login details are not valid');
-
     }
-    public function register_view(){
+    public function register_view()
+    {
         return view('auth.register');
     }
 
-    public function  register(Request $request){
-
-        $request->validate([
-            'name'=>'required',
-            'email'=>'required',
-            'password'=>'required',
-        ]);
-        $user = new User;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->save();
-
-        if(Auth::attempt($request->only('email','password'))){
-            return redirect(route('home'));
-        }
-
+    public function  register(AuthService $AuthService, RegisterUserRequest $request)
+    {
+        $AuthService->UserRegister($request);
         return redirect('register')->withError('Error');
-
     }
-
-
 }
