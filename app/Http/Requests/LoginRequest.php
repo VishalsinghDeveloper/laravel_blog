@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
-class CategoryAddRequest extends FormRequest
+use App\Models\User;
+use Illuminate\Http\Request;
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,11 +22,12 @@ class CategoryAddRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(Request $request)
     {
         return [
-            'name'=>'required|string',
-            'description'=>'required|string',
+            'email' => 'required|email',
+            'password' => 'required'
         ];
+
     }
 }

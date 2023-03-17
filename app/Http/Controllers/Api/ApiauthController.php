@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use App\Services\AuthService;
 use App\Http\Requests\RegisterUserRequest;
+use App\Http\Requests\LoginRequest;
 use Laravel\Sanctum\PersonalAccessToken;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -21,16 +22,23 @@ use Laravel\Sanctum\HasApiTokens;
 
 class ApiauthController extends Controller
 {
-    public function login(AuthService $AuthService, Request $request, User $user)
+    public function login(AuthService $AuthService, LoginRequest $request, User $user)
     {
-        $AuthService->UserLogin($request);
-        $user = $request->user();
-        $token = $user->createToken($request->email)->plainTextToken;
-        return Response()->json([
-            'loggedin' => true, 'success' => 'Login was successfully !',
-            'user' => Auth::user(),
-            'Token' => $token,
-        ]);
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            $AuthService->UserLogin($request);
+            $user = $request->user();
+            $token = $user->createToken($request->email)->plainTextToken;
+            return Response()->json([
+                'loggedin' => true, 'success' => 'Login was successfully !',
+                'user' => Auth::user(),
+                'Token' => $token,
+            ]);
+        } else {
+            return Response()->json([
+                'loggedin' => false, 'failure' => 'Login was unuccessfully !! ',
+                'message' => 'please enter right information '
+            ]);
+        }
     }
     public function  register(AuthService $AuthService, RegisterUserRequest $request)
     {

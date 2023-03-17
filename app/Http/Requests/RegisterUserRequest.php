@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+
 class RegisterUserRequest extends FormRequest
 {
     /**
@@ -22,12 +23,12 @@ class RegisterUserRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules( Request $request)
+    public function rules(Request $request)
     {
         return [
-            'name'=>'required',
-            'email'=>'required|email|unique:users',
-             'password'=>'required',//|min:8',,
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8|max:10',
         ];
         if (User::where('email', $request->email)->first()) {
             return response([

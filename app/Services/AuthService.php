@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterUserRequest;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\LoginRequest;
+
 
 class AuthService
 {
@@ -23,12 +25,15 @@ class AuthService
         }
     }
 
-    public function UserLogin(Request $request,)
+    public function UserLogin(LoginRequest $request,)
     {
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = $request->user();
             $user->save();
+
         }
+
+
     }
 
     public function UserLogout()
