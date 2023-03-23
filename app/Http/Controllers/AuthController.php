@@ -36,7 +36,7 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function  register(AuthService $AuthService,RegisterUserRequest $request)
+    public function  register(AuthService $AuthService, RegisterUserRequest $request)
     {
         $AuthService->UserRegister($request);
         return redirect('register')->withError('Error');

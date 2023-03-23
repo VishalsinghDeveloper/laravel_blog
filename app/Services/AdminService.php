@@ -16,7 +16,7 @@ class AdminService
         $category = new Category;
         $category->name = $request->name;
         $category->description = $request->description;
-        $category->status= $request->status;
+        $category->status = $request->status;
         $category->save();
     }
 
@@ -25,7 +25,7 @@ class AdminService
         $category = category::find($id);
         $category->name = $request->name;
         $category->description = $request->description;
-        $category->status= $request->status;
+        $category->status = $request->status;
         $category->save();
     }
     public function DeleteCategory($id)
@@ -42,5 +42,4 @@ class AdminService
     {
         return User::all();
     }
-
 }
