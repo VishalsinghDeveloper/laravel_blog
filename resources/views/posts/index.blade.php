@@ -68,7 +68,6 @@
                                         <input type="submit" class="btn btn-primary" value=" Add Post " />
                                     </div>
                             </form>
-
                         </div>
                     </div>
                 </div>

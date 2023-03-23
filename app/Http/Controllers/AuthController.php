@@ -10,11 +10,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Services\AuthService;
 use App\Http\Requests\RegisterUserRequest;
+use App\Http\Requests\LoginRequest;
+
 
 class AuthController extends Controller
 {
-
-    public function logout(AuthService $AuthService,)
+    public function logout(AuthService $AuthService)
     {
         $AuthService->UserLogout();
         return redirect(route('login'));
@@ -24,7 +25,8 @@ class AuthController extends Controller
     {
         return view('auth.login');
     }
-    public function login(AuthService $AuthService, Request $request)
+
+    public function login(AuthService $AuthService, LoginRequest $request)
     {
         $AuthService->UserLogin($request);
         return redirect('/')->withError('Login details are not valid');
@@ -34,7 +36,7 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function  register(AuthService $AuthService, RegisterUserRequest $request)
+    public function  register(AuthService $AuthService,RegisterUserRequest $request)
     {
         $AuthService->UserRegister($request);
         return redirect('register')->withError('Error');

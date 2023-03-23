@@ -34,12 +34,6 @@ class AdminService
         $category->delete();
     }
 
-    public function userdelete($id)
-    {
-        $user = User::find($id);
-        $user->delete();
-    }
-
     public function ShowCategory($id)
     {
         return  category::find($id);
@@ -48,4 +42,5 @@ class AdminService
     {
         return User::all();
     }
+
 }

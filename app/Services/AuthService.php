@@ -20,7 +20,7 @@ class AuthService
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
-        if(Auth::attempt($request->only('email','password'))){
+        if (Auth::attempt($request->only('email', 'password'))) {
             return redirect(route('home'));
         }
     }
@@ -30,10 +30,7 @@ class AuthService
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = $request->user();
             $user->save();
-
         }
-
-
     }
 
     public function UserLogout()

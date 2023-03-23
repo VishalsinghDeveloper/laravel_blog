@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
 use GuzzleHttp\Middleware;
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,22 +21,20 @@ use GuzzleHttp\Middleware;
 
 
 Route::group(['middleware' => 'guest'], function () {
-
-    Route::get('/', [AuthController::class, 'index'])->name('login');
     Route::post('/', [AuthController::class, 'login'])->name('login');
-    Route::get('register', [AuthController::class, 'register_view'])->name('register');
     Route::post('register', [AuthController::class, 'register'])->name('register');
+    Route::get('/', [AuthController::class, 'index'])->name('login');
+    Route::get('register', [AuthController::class, 'register_view'])->name('register');
 });
+
 Route::group(['middleware' => 'auth'], function () {
-    // Route::get('mypost', [PostController::class, 'post'])->name('mypost');
-    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('home', [PostController::class, 'post'])->name('home');
     Route::get('post', [PostController::class, 'index'])->name('post');
-    Route::post('post', [PostController::class, 'add_post'])->name('post');
     Route::get('postedit/{id}', [PostController::class, 'edit'])->name('edit');
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('post', [PostController::class, 'add_post'])->name('post');
     Route::put('postedit/{id}', [PostController::class, 'update'])->name('update');
     Route::get('postdelete/{id}', [PostController::class, 'destroy'])->name('delete');
-
 });
 
 Route::group(['middleware' => 'admin'], function () {
@@ -51,8 +50,4 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('showcategory', [AdminController::class, 'showcategory'])->name('showcategory');
     Route::get('update&delete', [AdminController::class, 'update_delete'])->name('update&delete');
     Route::get('user', [AdminController::class, 'user'])->name('user');
-    Route::get('userdelete', [AdminController::class, 'userdelete'])->name('userdelete');
-
 });
-
-

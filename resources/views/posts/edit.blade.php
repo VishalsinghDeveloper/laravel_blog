@@ -27,7 +27,6 @@
                                         @enderror
                                     </span>
                                 </div>
-
                                 <div class="form-outline mb-4">
                                     <input type="text" name="description" class="form-control form-control-lg"
                                         value="{{old('description',$post->description)}}">
@@ -64,7 +63,6 @@
                                             </select>
                                         </div>
                                     </div>
-
                                     <div class="text-center mt-5">
                                         <input type="submit" class="btn btn-primary" value=" update Post " />
                                     </div>

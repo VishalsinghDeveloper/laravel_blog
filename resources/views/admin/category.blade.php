@@ -1,62 +1,57 @@
 @extends('admin.layouts.main')
 @section('content')
-<section class="h-100 bg-image"  style="margin-top:10%; margin-left:12%">
-  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-    <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-          <div class="card" style="border-radius: 15px;">
-            <div class="card-body p-5">
-              <h1 class="text-uppercase text-center mb-5">Add Category</h1>
-              @if (Session::has('error'))
-              <p class="text-danger">{{ Session::get('error') }}</p>
-          @endif
-          @if (Session::has('success'))
-              <p class="text-success">{{ Session::get('success') }}</p>
-          @endif
-              <form method="post" action="">
-                @csrf
-
-                <div class="form-outline mb-4">
-                    <input type="text"  name="name"class="form-control form-control-lg" />
-                    <label class="form-label">Name</label>
-                    <span class="text-danger">
-                        @error('email')
-                            {{ $message }}
-                        @enderror
-                    </span>
-                  </div>
-
-                  <div class="form-outline mb-4">
-                    <input type="text" name="description"class="form-control form-control-lg" />
-                    <label class="form-label">Description</label>
-                    <span class="text-danger">
-                        @error('description')
-                            {{ $message }}
-                        @enderror
-                    </span>
-                  </div>
-
-                  <div class="form-outline mb-4">
-                    <input type="number" name="status"class="form-control form-control-lg" />
-                    <label class="form-label">Status</label>
-                    <span class="text-danger">
-                        @error('status')
-                            {{ $message }}
-                        @enderror
-                    </span>
-                  </div>
-
-                    <div class="text-center mt-5">
-                        <input type="submit" class="btn btn-primary" value="Create" />
+<section class="h-100 bg-image" style="margin-top:10%; margin-left:12%">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <h1 class="text-uppercase text-center mb-5">Add Category</h1>
+                            @if (Session::has('error'))
+                            <p class="text-danger">{{ Session::get('error') }}</p>
+                            @endif
+                            @if (Session::has('success'))
+                            <p class="text-success">{{ Session::get('success') }}</p>
+                            @endif
+                            <form method="post" action="">
+                                @csrf
+                                <div class="form-outline mb-4">
+                                    <input type="text" name="name" class="form-control form-control-lg" />
+                                    <label class="form-label">Name</label>
+                                    <span class="text-danger">
+                                        @error('email')
+                                        {{ $message }}
+                                        @enderror
+                                    </span>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <input type="text" name="description" class="form-control form-control-lg" />
+                                    <label class="form-label">Description</label>
+                                    <span class="text-danger">
+                                        @error('description')
+                                        {{ $message }}
+                                        @enderror
+                                    </span>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <input type="number" name="status" class="form-control form-control-lg" />
+                                    <label class="form-label">Status</label>
+                                    <span class="text-danger">
+                                        @error('status')
+                                        {{ $message }}
+                                        @enderror
+                                    </span>
+                                </div>
+                                <div class="text-center mt-5">
+                                    <input type="submit" class="btn btn-primary" value="Create" />
+                                </div>
+                            </form>
+                        </div>
                     </div>
-              </form>
-
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 @endsection

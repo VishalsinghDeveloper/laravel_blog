@@ -24,21 +24,22 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::group(['middleware'=>'auth:sanctum'],function(){
+Route::group(['middleware' => 'auth:sanctum'], function () {
 
-    Route::get('category',[ApiadminController::class,'index']);
-    Route::get('category/{id}',[ApiadminController::class,'show']);
-    Route::post('category',[ApiadminController::class,'addCategory']);
-    Route::put('category/{id}',[ApiadminController::class,'update']);
-    Route::delete('category/{id}',[ApiadminController::class,'destroy']);
-    Route::get('user',[ApiadminController::class,'user']);
-    Route::get('post',[ApipostController::class,'index']);
-    Route::post('post',[ApipostController::class,'add_post']);
-    Route::post('post/{id}',[ApipostController::class,'update']);
-    Route::delete('post/{id}',[ApipostController::class,'destroy']);
+    Route::get('category', [ApiadminController::class, 'index']);
+    Route::get('category/{id}', [ApiadminController::class, 'show']);
+    Route::post('category', [ApiadminController::class, 'addCategory']);
+    Route::put('category/{id}', [ApiadminController::class, 'update']);
+    Route::delete('category/{id}', [ApiadminController::class, 'destroy']);
+    Route::get('user', [ApiadminController::class, 'user']);
+    Route::get('post', [ApipostController::class, 'index']);
+    Route::post('post', [ApipostController::class, 'add_post']);
+    Route::post('post/{id}', [ApipostController::class, 'update']);
+    Route::delete('post/{id}', [ApipostController::class, 'destroy']);
 
 });
-Route::post('login',[ApiauthController::class,'login']);
-Route::post('register',[ApiauthController::class,'register']);
-Route::post('logout',[ApiauthController::class,'logout']);
 
+
+Route::post('login', [ApiauthController::class, 'login']);
+Route::post('register', [ApiauthController::class, 'register']);
+Route::post('logout', [ApiauthController::class, 'logout']);

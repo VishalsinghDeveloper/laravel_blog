@@ -36,6 +36,7 @@ class AdminController extends Controller
         $AdminService->addcategory($request);
         return redirect(route('category'));
     }
+
     public function edit($id)
     {
         $category = category::find($id);
@@ -47,6 +48,7 @@ class AdminController extends Controller
         $AdminService->UpdateCategory($request, $id);
         return redirect(route('update&delete'));
     }
+
     public function destroy(AdminService $AdminService, $id)
     {
         $AdminService->DeleteCategory($id);
@@ -70,13 +72,6 @@ class AdminController extends Controller
         $user = User::all();
         return view('admin.user', ['user' => $user]);
     }
-
-    public function userdelete(AdminService $AdminService, $id)
-    {
-        $AdminService->userdelete($id);
-        return redirect()->back();
-    }
-
 
     public function postedit(Post $post, $id)
     {

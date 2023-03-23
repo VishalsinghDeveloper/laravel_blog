@@ -19,7 +19,7 @@
 			<li>
 				<a href="{{ route('show') }}">
 					<i class='bx bxs-dashboard' ></i>
-					<span class="text">Blogs</span>
+					<span class="text">All Blogs</span>
 				</a>
 			</li>
 			<li>

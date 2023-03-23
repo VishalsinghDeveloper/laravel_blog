@@ -45,7 +45,9 @@
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->description }}</td>
                         <td>@foreach($post->categories as $categories)
+                            @if($categories->status == 1)
                             {{$categories->name}}
+                        @endif
                       @endforeach
                     </td>
                     <td>
